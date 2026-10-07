@@ -1,0 +1,86 @@
+[
+  {
+    "id": "puff",
+    "name": "ユゲ",
+    "power": 8,
+    "priority": 0,
+    "effect": "attack"
+  },
+  {
+    "id": "bash",
+    "name": "タイアタリ",
+    "power": 10,
+    "priority": -1,
+    "effect": "attack"
+  },
+  {
+    "id": "spark",
+    "name": "ヒバナ",
+    "power": 8,
+    "priority": 0,
+    "effect": "attack"
+  },
+  {
+    "id": "rain",
+    "name": "コサメ",
+    "power": 7,
+    "priority": 1,
+    "effect": "attack"
+  },
+  {
+    "id": "guard",
+    "name": "マモル",
+    "power": 0,
+    "priority": 4,
+    "effect": "guard"
+  },
+  {
+    "id": "dodge",
+    "name": "カワス",
+    "power": 0,
+    "priority": 5,
+    "effect": "dodge"
+  },
+  {
+    "id": "mend",
+    "name": "ヒトヤスミ",
+    "power": 7,
+    "priority": -2,
+    "effect": "heal"
+  },
+  {
+    "id": "rush",
+    "name": "ハヤワザ",
+    "power": 5,
+    "priority": 3,
+    "effect": "attack"
+  },
+  {
+    "id": "crush",
+    "name": "ドスン",
+    "power": 15,
+    "priority": -3,
+    "effect": "attack"
+  },
+  {
+    "id": "focus",
+    "name": "タメル",
+    "power": 0,
+    "priority": 2,
+    "effect": "focus"
+  },
+  {
+    "id": "pierce",
+    "name": "ツラヌク",
+    "power": 7,
+    "priority": 0,
+    "effect": "pierce"
+  },
+  {
+    "id": "drain",
+    "name": "スイトリ",
+    "power": 6,
+    "priority": 0,
+    "effect": "drain"
+  }
+]

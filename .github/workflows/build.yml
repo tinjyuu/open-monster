@@ -1,0 +1,24 @@
+name: Build and verify ROM
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/install_gbdk.py
+      - run: make test && make
+      - run: pip install -r tests/requirements.txt
+      - run: python tests/emulator_test.py
+      - run: python tests/addition_test.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: open-monster-rom
+          path: |
+            dist/open-monster.gbc
+            dist/verification.json
+            dist/*-160.png

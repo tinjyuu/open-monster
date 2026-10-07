@@ -1,0 +1,37 @@
+name: モンスターのアイデア
+description: 設定やラフだけでも参加できます。
+title: "[Monster] "
+body:
+  - type: input
+    id: name
+    attributes:
+      label: モンスターの名前
+    validations:
+      required: true
+  - type: textarea
+    id: life
+    attributes:
+      label: 性格・生態・暮らす場所
+      description: どんな子でしょう？ ラフも添付できます。
+    validations:
+      required: true
+  - type: textarea
+    id: battle
+    attributes:
+      label: 戦い方の個性・得意なこと・弱点
+  - type: textarea
+    id: help
+    attributes:
+      label: 一緒に作ってほしい部分
+      description: 絵、技、能力値、実装など。
+  - type: input
+    id: credits
+    attributes:
+      label: 作者・共同作者
+  - type: checkboxes
+    id: originality
+    attributes:
+      label: 創作と公開
+      options:
+        - label: 自作のオリジナルで、完成した投稿をMITライセンスで共有する意思があります。
+          required: true

@@ -1,0 +1,11 @@
+.tools/
+__pycache__/
+*.pyc
+src/generated.c
+src/generated.h
+dist/*.map
+dist/*.noi
+dist/*.sym
+dist/*.sav
+dist/*.state
+.DS_Store

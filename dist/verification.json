@@ -1,0 +1,22 @@
+{
+  "rom": "open-monster.gbc",
+  "emulator": "PyBoy 2.6.1",
+  "passed": [
+    "boot",
+    "starter",
+    "training",
+    "loadout",
+    "exploration",
+    "wild battle",
+    "scout",
+    "switch",
+    "all 3 trainers",
+    "loss recovery",
+    "progression",
+    "save/restart",
+    "incompatible save protected",
+    "corrupt save protected"
+  ],
+  "wild_battles": 13,
+  "hardware_tested": false
+}
