@@ -14,3 +14,6 @@ src/locale_ids.h
 assets/drafts/
 
 dist/video/
+
+dist/visual-fixture*
+dist/expected-*.ppm

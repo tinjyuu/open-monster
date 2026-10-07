@@ -6,7 +6,7 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 SYMS={line.split()[1]:int(line.split()[2],16)for line in(ROOT/'dist/open-monster.noi').read_text().splitlines()if line.startswith('DEF ')}
 OUT=ROOT/'dist/video';OUT.mkdir(exist_ok=True)
-video=OUT/'open-monster-gameplay-v0.2.mp4'
+video=OUT/'open-monster-gameplay-v0.3.mp4'
 encoder=subprocess.Popen(['ffmpeg','-hide_banner','-loglevel','error','-y','-f','rawvideo','-pixel_format','rgb24','-video_size','640x576','-framerate','30','-i','pipe:0','-an','-c:v','libx264','-preset','fast','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(video)],stdin=subprocess.PIPE)
 frames=0;chapters=[]
 with tempfile.TemporaryDirectory()as td:

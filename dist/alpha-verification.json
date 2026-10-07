@@ -1,0 +1,491 @@
+{
+  "layers": [
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/top",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/bottom",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/building",
+      "transparent_pixels_checked": 427,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/bridge",
+      "transparent_pixels_checked": 0,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/trainer",
+      "transparent_pixels_checked": 136,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/trainer",
+      "transparent_pixels_checked": 136,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "world/trainer",
+      "transparent_pixels_checked": 136,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/left",
+      "transparent_pixels_checked": 65,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/tree/right",
+      "transparent_pixels_checked": 68,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "battle/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/logo",
+      "transparent_pixels_checked": 3355,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/tree",
+      "transparent_pixels_checked": 133,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "layer": "title/flowers",
+      "transparent_pixels_checked": 58,
+      "alpha_errors": 0
+    },
+    {
+      "scene": "field",
+      "tiles": 34,
+      "palette_roundtrip_errors": 0
+    },
+    {
+      "scene": "arena",
+      "tiles": 7,
+      "palette_roundtrip_errors": 0
+    },
+    {
+      "scene": "poster",
+      "tiles": 70,
+      "palette_roundtrip_errors": 0
+    }
+  ],
+  "all_alpha_errors": 0,
+  "all_palette_roundtrip_errors": 0,
+  "emulator_checks": {
+    "logo_transparency": {
+      "transparent_pixels": 3355,
+      "errors": 0
+    },
+    "title_monsters": {
+      "transparent_pixels": 1047,
+      "errors": 0
+    },
+    "scenery_emulator_roundtrip": {
+      "pixels": 17728,
+      "errors": 0
+    },
+    "building_transparency": {
+      "transparent_pixels": 427,
+      "errors": 0
+    },
+    "text_transparent_spaces": {
+      "transparent_pixels": 1213,
+      "errors": 0
+    },
+    "battle_monsters_and_commands": {
+      "transparent_pixels": 1971,
+      "errors": 0
+    },
+    "sprite_scanline_limit": {
+      "max": 9,
+      "limit": 10,
+      "errors": 0
+    },
+    "all_six_species_both_directions": {
+      "transparent_pixels": 6166,
+      "errors": 0
+    }
+  }
+}

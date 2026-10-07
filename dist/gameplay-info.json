@@ -1,0 +1,62 @@
+{
+  "file": "open-monster-gameplay-v0.3.mp4",
+  "duration_seconds": 87.73,
+  "fps": 30,
+  "resolution": [
+    640,
+    576
+  ],
+  "source": "Actual ROM in PyBoy 2.6.1; button inputs only, no gameplay RAM changes",
+  "audio": false,
+  "rom_sha256": "ae452a4eaf18ca03f4e19a38d3933c30493d23488038978c08daf33b01df2045",
+  "chapters": [
+    {
+      "seconds": 0.0,
+      "scene": "Title / language switching"
+    },
+    {
+      "seconds": 7.2,
+      "scene": "Choose your first companion"
+    },
+    {
+      "seconds": 17.23,
+      "scene": "Explore with Chapo"
+    },
+    {
+      "seconds": 21.7,
+      "scene": "Training styles"
+    },
+    {
+      "seconds": 31.93,
+      "scene": "Equip a learned move"
+    },
+    {
+      "seconds": 42.73,
+      "scene": "Cross the river and search the grass"
+    },
+    {
+      "seconds": 48.23,
+      "scene": "Battle cards and enemy intent"
+    },
+    {
+      "seconds": 58.63,
+      "scene": "Dodge cooldown"
+    },
+    {
+      "seconds": 65.53,
+      "scene": "Scout a weakened wild creature"
+    },
+    {
+      "seconds": 70.47,
+      "scene": "Try again after a failed scout"
+    },
+    {
+      "seconds": 75.4,
+      "scene": "Meet your new companion"
+    },
+    {
+      "seconds": 82.77,
+      "scene": "Save the journey"
+    }
+  ]
+}

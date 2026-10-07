@@ -17,10 +17,12 @@ jobs:
       - run: python tests/emulator_test.py
       - run: OPEN_MONSTER_LOCALE=ja python tests/emulator_test.py
       - run: python tests/addition_test.py
+      - run: python tests/transparency_test.py
       - uses: actions/upload-artifact@v4
         with:
           name: open-monster-rom
           path: |
             dist/open-monster.gbc
             dist/verification-*.json
+            dist/alpha-verification.json
             dist/*-160.png

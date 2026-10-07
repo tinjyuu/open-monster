@@ -4,6 +4,8 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'scripts'))
 from localization import load_locales,symbol
+from scene_codegen import scenes
+from sprite_codegen import sprite_bytes,build_buttons
 EFFECTS=['attack','guard','dodge','heal','focus','pierce','drain']
 TRAITS=['steam','rain','warm','shell','spore','quick']
 BASE_IDS=['puff','bash','spark','rain','guard','dodge','mend','rush','crush','focus','pierce','drain']
@@ -90,7 +92,10 @@ def generate():
  icons=[['0000000000000000','0000000111100000','0000011000010000','0000100000001000','0000100011001000','0000100100101000','0000100011001000','0000010000001000','0000001100010000','0000000011100000','0000000100000000','0000001000000000','0000001000000000','0000000100000000','0000000000000000','0000000000000000'], ['0000000000000000','0000011111100000','0001112222111000','0001222222221000','0001222222221000','0001222222221000','0001222222221000','0000122222210000','0000122222210000','0000012222100000','0000012222100000','0000001221000000','0000000110000000','0000000000000000','0000000000000000','0000000000000000'], ['0000000000000000','0000000000011000','0000000001121000','0000000012221000','0000000122210000','0000001222100000','0000012221000000','0000122210000000','0001222100000000','0012221000000000','0012210000000000','0001100000000000','0010000000000000','0100000000000000','0000000000000000','0000000000000000']]
  out+=arr('action_icons',sum((tile_data([[int(c)for c in r]for r in icon])for icon in icons),[]))
  for m in mons:
-  out+=arr('art_'+m['id'],tile_data(art(m['pixels'],32//len(m['pixels']))))+arr('small_'+m['id'],tile_data(art(m['pixels'] if len(m['pixels'])==16 else [''.join(row[::2])for row in m['pixels'][::2]])))
+  out+=arr('small_'+m['id'],tile_data(art(m['pixels'] if len(m['pixels'])==16 else [''.join(row[::2])for row in m['pixels'][::2]])))
+ out+=scenes(ROOT,tile_data,arr)
+ out+=build_buttons(ROOT,tile_data,arr)
+ for m in mons:out+=arr('obj_'+m['id'],sprite_bytes(art(m['pixels'],32//len(m['pixels'])),tile_data))
  # original overhead explorer
  player=['....111111......','...12222221.....','...11111111.....','....133331......','....131131......','....133331......','.....1111.......','....122221......','...12222221.....','...11222211.....','....122221......','....122221......','....111111......','....12..21......','....11..11......','................']
  out+=arr('player_tiles',tile_data(art(player)))
@@ -99,7 +104,7 @@ def generate():
  entries=[]
  for m in mons:
   st=m['stats'];values=[names(m['name']),names(m['bio']),str(m['save_id']),str(TRAITS.index(m['trait'])),str(int(m['starter']))]+[str(st[k])for k in ['hp','attack','defense','speed']]
-  values+=['{'+','.join(str(BASE_IDS.index(x))for x in m['base_moves'])+'}','{'+','.join(str(BASE_IDS.index(m['training'][x]))for x in ['attack','defense','technique'])+'}','{'+','.join(str(color(x))for x in m['palette'])+'}','art_'+m['id'],'small_'+m['id']]
+  values+=['{'+','.join(str(BASE_IDS.index(x))for x in m['base_moves'])+'}','{'+','.join(str(BASE_IDS.index(m['training'][x]))for x in ['attack','defense','technique'])+'}','{'+','.join(str(color(x))for x in m['palette'])+'}','small_'+m['id'],'obj_'+m['id']]
   entries.append('{'+','.join(values)+'}')
  out+=',\n'.join(entries)+'};\n'+f'const uint8_t species_count={len(mons)},move_count={len(moves)};\n'
  # Validate all UI text has a glyph, preventing blank Japanese labels at runtime.
@@ -111,7 +116,7 @@ def generate():
  source=(ROOT/'src/main.c').read_text()
  for msg in re.findall(r'L\((MSG_[A-Z0-9_]+)\)',source):assert msg in {'MSG_'+symbol(k)for k in keys},f'Unknown message ID {msg}'
  (ROOT/'src/generated.c').write_text(out)
- (ROOT/'src/generated.h').write_text('#ifndef GENERATED_H\n#define GENERATED_H\n#include <stdint.h>\n#include "locale_ids.h"\nextern const char *const locale_text[LOCALE_COUNT][MSG_COUNT];\nextern const uint8_t font_tiles[],font_count,terrain_tiles[],player_tiles[],action_icons[];\nextern const uint16_t font_codes[];\n#endif\n')
+ (ROOT/'src/generated.h').write_text('#ifndef GENERATED_H\n#define GENERATED_H\n#include <stdint.h>\n#include "locale_ids.h"\nextern const char *const locale_text[LOCALE_COUNT][MSG_COUNT];\nextern const uint8_t font_tiles[],font_count,terrain_tiles[],player_tiles[],action_icons[];\nextern const uint8_t medal_0[],medal_1[],medal_2[];\nextern const uint8_t field_tiles[],field_map[],field_attrs[],field_count,arena_tiles[],arena_map[],arena_attrs[],arena_count,poster_tiles[],poster_map[],poster_attrs[],poster_count;\nextern const uint16_t font_codes[];\n#endif\n')
  print(f'Validated {len(mons)} monsters, {len(moves)} moves; {len(chars)} original font tiles')
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');a=p.parse_args()

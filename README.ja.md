@@ -36,7 +36,7 @@
 
 ## プレイ動画
 
-[約88秒のプレイ動画（MP4）](https://github.com/tinjyuu/open-monster/releases/download/v0.2.0/open-monster-gameplay-v0.2.mp4)。実際のROMをエミュレーターで操作した記録です。30fps、無音。再現する場合はFFmpegを用意し、`.tools/venv/bin/python scripts/record_gameplay.py` を実行します。
+[約88秒のプレイ動画（MP4）](https://github.com/tinjyuu/open-monster/releases/download/v0.3.0/open-monster-gameplay-v0.3.mp4)。実際のROMをエミュレーターで操作した記録です。30fps、無音。再現する場合はFFmpegを用意し、`.tools/venv/bin/python scripts/record_gameplay.py` を実行します。
 
 ## ビルド
 
@@ -79,3 +79,5 @@ python3 -m venv .tools/venv
 独自コード・設定・画像・フォントは [MIT](LICENSE)。GBDKのリンクされるライブラリはGPLv2 + linking exceptionです。[外部依存の説明](docs/third-party.md)を参照してください。
 
 通信対戦、大規模な地方・物語、音楽、詳細な戦闘アニメーションは後続版の対象です。
+
+描画元データと透過検査は[描画仕様](docs/ja/rendering.md)を参照してください。

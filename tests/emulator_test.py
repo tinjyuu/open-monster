@@ -30,7 +30,7 @@ def run():
   assert state()==0
   if LANGUAGE=='ja':press('select')
   font=list(json.loads((ROOT/'assets/font.json').read_text()))+list('ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョ')
-  assert read('screen',201)==font.index('Y' if LANGUAGE=='en' else 'ミ'),'Locale switch did not update title'
+  assert read('screen',123)==font.index('Y' if LANGUAGE=='en' else 'ミ'),'Locale switch did not update title'
   shot('title');press('a');assert state()==1;press('a');ack();assert state()==2;shot('world')
   # Training + loadout via actual menus.
   press('a');assert state()==3;press('a');assert state()==4;shot('training');press('a');ack();assert read('game',7+4)==1

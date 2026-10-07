@@ -30,7 +30,7 @@ make test && make
 
 The helper scaffolds the example art and data from Chapo, assigns an unused save ID and creates complete catalog entries. Replace the example with your own design before proposing it. The new species becomes a wild encounter candidate automatically; no engine edit is needed.
 
-The battle uses 32×32 tiles. Existing 16×16 art is enlarged at an integer scale. Native 32×32 art is rendered directly; the field companion uses a 16×16 sampling. Review both sizes. Palette colors are quantized to GBC 5-bit RGB.
+The battle uses 32×32 hardware sprites with color index zero transparent. Existing 16×16 art is enlarged at an integer scale. Native 32×32 art is rendered directly; the field companion uses a 16×16 sampling. Review both sizes. Palette colors are quantized to GBC 5-bit RGB.
 
 ## Moves and traits
 

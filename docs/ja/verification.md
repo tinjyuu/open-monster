@@ -30,6 +30,7 @@ python3 scripts/check_locales.py
 .tools/venv/bin/python tests/emulator_test.py
 OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
+.tools/venv/bin/python tests/transparency_test.py
 ```
 
 実際の160×144画面と4倍の整数拡大画像を `dist/` に収録。画像生成によるコンセプト画ではなく、ROMから取得した画像です。機械可読結果は `dist/verification-en.json` と `dist/verification-ja.json`。
@@ -38,6 +39,8 @@ OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 
 **ChromaticおよびオリジナルGame Boy Color実機は未検証です。** 書き込み・保存対応のカートリッジを用意し、起動、パレット、操作、SRAM保存と電源再投入、3人の撃破を実機で確認する作業が残ります。
 
-v0.1は短い試作です。グラフィックは簡素なオリジナルのドット絵で、音楽・効果音・詳細な戦闘アニメーションはありません。日本語はカタカナです。戦闘開始時に全員を回復するため、探索中の体力管理はありません。重複種の育成、仲間の預け入れ、通信対戦、物語・地方の拡張は未実装です。
+v0.3は短い試作です。独自のドット絵を使用し、音楽・効果音・詳細な戦闘アニメーションはありません。日本語はカタカナです。戦闘開始時に全員を回復するため、探索中の体力管理はありません。重複種の育成、仲間の預け入れ、通信対戦、物語・地方の拡張は未実装です。
 
 現在の同時所持上限は6体、種データ上限は24種です。追加した種は野生候補に入りますが、所持上限を超えた図鑑・保管機能は後続版で設計します。RAM形式はv1で、自動移行は行いません。
+
+建物・ロゴ・文字の空白・操作アイコン・6体の左右両向きを透過検査し、画素差分0を確認。[描画仕様](rendering.md)と `dist/alpha-verification.json` を参照してください。

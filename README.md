@@ -30,7 +30,7 @@ You can keep six different species. Battles start with a healed party; losing re
 
 ## Gameplay video
 
-[Watch the 88-second gameplay recording (MP4)](https://github.com/tinjyuu/open-monster/releases/download/v0.2.0/open-monster-gameplay-v0.2.mp4). Real emulator execution, button inputs only, 30 fps; the prototype has no audio. To reproduce it, install ffmpeg, build the ROM, install the test dependencies, then run `.tools/venv/bin/python scripts/record_gameplay.py`.
+[Watch the 88-second gameplay recording (MP4)](https://github.com/tinjyuu/open-monster/releases/download/v0.3.0/open-monster-gameplay-v0.3.mp4). Real emulator execution, button inputs only, 30 fps; the prototype has no audio. To reproduce it, install ffmpeg, build the ROM, install the test dependencies, then run `.tools/venv/bin/python scripts/record_gameplay.py`.
 
 ## Build and verify
 
@@ -50,15 +50,18 @@ python3 -m venv .tools/venv
 .tools/venv/bin/python tests/emulator_test.py
 OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
+.tools/venv/bin/python tests/transparency_test.py
 ```
 
-CI builds the ROM, checks data and translations, runs both languages through the adventure, and verifies an additional JSON-only species. See [verification](docs/verification.md).
+CI builds the ROM, checks data and translations, runs both languages through the adventure, verifies an additional JSON-only species, and checks exact sprite/building/text transparency. See [verification](docs/verification.md).
 
 ## Create with us
 
 **An idea is enough to join.** Propose a creature's personality, habitat and fighting style through [Issues](https://github.com/tinjyuu/open-monster/issues/new/choose). Different people can help with artwork, writing, balance, code and testing.
 
 Read [Contributing](CONTRIBUTING.md) and the [monster format](docs/monster-format.md). Ordinary species additions require content and pixel data, not changes to the game engine. Creators are credited in the monster's `authors` field and [CREDITS](CREDITS.md). tinjyuu and the initial maintainers review proposals against public criteria.
+
+The [rendering guide](docs/rendering.md) describes the original pixel sources, hardware sprite transparency, exact scene palettes and visual checks.
 
 ## Languages
 
