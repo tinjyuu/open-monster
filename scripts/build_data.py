@@ -15,8 +15,12 @@ def content(root=ROOT):
  assert [m['id'] for m in mons[:6]]==['chapo','amagumo','tomori','neji','kasamo','tikutaku'],'Baseline species IDs are save ABI'
  assert all(m['starter'] for m in mons[:3]) and sum(bool(m['starter']) for m in mons)==3,'Exactly first three are starters'
  for m in moves:
+  assert type(m['power']) is int and type(m['priority']) is int,'Move values must be integers'
   assert m['effect'] in EFFECTS and 0<=m['power']<=20 and -5<=m['priority']<=5,'Invalid move'
  for m in mons:
+  assert type(m['save_id']) is int and type(m['starter']) is bool,'save_id must be integer, starter must be boolean'
+  assert isinstance(m['name'],str) and isinstance(m['bio'],str),'Name/bio must be strings'
+  assert all(type(m['stats'][k]) is int for k in ['hp','attack','defense','speed']),'Stats must be integers'
   assert re.fullmatch(r'[a-z][a-z0-9_-]*',m['id']) and 0<=m['save_id']<255
   assert 1<=len(m['name'])<=8 and len(m['bio'])<=18,'Name/bio too long'
   assert m['trait'] in TRAITS

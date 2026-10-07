@@ -21,4 +21,10 @@ class ContentTests(unittest.TestCase):
   self.write(self.sample(id='sample',save_id=6,starter=False,base_moves=['missing','guard','dodge']));self.assertRaises(ValueError,bd.content,self.root)
  def test_extreme_stats_rejected(self):
   self.write(self.sample(id='sample',save_id=6,starter=False,stats=dict(hp=255,attack=10,defense=10,speed=10)));self.assertRaises(AssertionError,bd.content,self.root)
+ def test_fractional_save_id_rejected(self):
+  self.write(self.sample(id='sample',save_id=6.1,starter=False));self.assertRaises(AssertionError,bd.content,self.root)
+ def test_fractional_stats_rejected(self):
+  self.write(self.sample(id='sample',save_id=6,starter=False,stats=dict(hp=32,attack=9.5,defense=7,speed=8)));self.assertRaises(AssertionError,bd.content,self.root)
+ def test_removed_baseline_rejected(self):
+  (self.root/'data/monsters/neji.json').unlink();self.assertRaises(AssertionError,bd.content,self.root)
 if __name__=='__main__':unittest.main()
