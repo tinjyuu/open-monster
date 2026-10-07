@@ -21,13 +21,16 @@ make test && make
 .tools/venv/bin/python tests/emulator_test.py
 OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
+.tools/venv/bin/python tests/flicker_audio_test.py
 .tools/venv/bin/python tests/transparency_test.py
 ```
 
 Actual ROM frames are in `dist/*-en-160.png` and `*-ja-160.png`; 4× previews use nearest-neighbor scaling. Results are recorded separately in `verification-en.json` and `verification-ja.json`. These are emulator frames, not generated concept art.
 
-**Chromatic and original Game Boy Color hardware have not been tested.** A hardware pass still needs boot, palettes, controls, writable cartridge compatibility, saving across power cycles and completing the three challenges.
+**The owner confirmed v0.3.0 booting on a Chromatic DevDay Edition on October 8, 2026, and reported movement flashes. This update is emulator verified; full hardware gameplay/audio acceptance and original GBC testing remain pending.** A hardware pass still needs boot, palettes, controls, writable cartridge compatibility, saving across power cycles and completing the three challenges.
 
-Prototype limitations: no audio, detailed battle animation, multiplayer, storage boxes, duplicate-species raising or full campaign. Every battle heals the party at its start. Six creatures can be held; data capacity is subject to validation and ROM budget. Saves remain v1; incompatible files are protected, with no automatic destructive migration.
+Prototype limitations: no detailed battle animation, multiplayer, storage boxes, duplicate-species raising or full campaign. Every battle heals the party at its start. Six creatures can be held; data capacity is subject to validation and ROM budget. Saves remain v1; incompatible files are protected, with no automatic destructive migration.
 
 Transparency checks cover the building, wordmark, text spaces, command sprites and all six species in both directions, with zero pixel differences. See [rendering](rendering.md) and `dist/alpha-verification.json`.
+
+Movement/audio regression covers 5,108 button-driven frames and 48 movement steps, with zero LCD-off calls after boot and zero fully white frames. Both original tracks emit audio and mute/resume passes. Results: `dist/flicker-audio-verification.json`.

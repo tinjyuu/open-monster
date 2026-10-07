@@ -15,3 +15,7 @@ v0.3は承認済みの画面案を反映。タイトル・探索・戦闘・訓�
 結果は `dist/alpha-verification.json`。通常ビルドで静的検査に戻るため、公開前は最後に透過テストを実行します。試験専用ROMと参照PPMは配布ROMに含めません。
 
 構図は任天堂公式の[ふしぎのぼうし](https://www.nintendo.co.jp/event/e3/gbasoft/legendofzelda/index.html)、[黄金の太陽の戦闘](https://www.nintendo.co.jp/n08/agsj/sento/index.html)、[マリオ＆ルイージRPG](https://www.nintendo.co.jp/n08/a88j/game/index.html)を参考に、背景の連続性・小さな状態表示・場面に重なる操作アイコン・奥行きを研究しました。参考作品の画像素材は使用していません。
+
+## 点滅を抑える描画
+
+v0.3.1では起動時だけLCDを停止します。画面切り替えは裏側のGBC VRAMバンクと非表示タイルマップで準備し、VBlankでパレット・スプライト形式・OAM・表示マップを反映します。準備中はOAMの自動転送を止め、フォントは両バンクへ初期化します。探索中は案内が変わらなければスプライトの位置だけを更新し、毎歩の全面消灯をなくしました。承認済みの画素と透過を保持します。

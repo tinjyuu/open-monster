@@ -12,7 +12,7 @@ This is a small, playable prototype: six species, twelve moves, scouting, traini
 
 ## Play
 
-Download `open-monster.gbc` from [Releases](https://github.com/tinjyuu/open-monster/releases), then use a Game Boy Color emulator or a compatible writable cartridge. **Chromatic and original GBC hardware remain untested.** A regular commercial cartridge is not necessarily writable.
+Download `open-monster.gbc` from [Releases](https://github.com/tinjyuu/open-monster/releases), then use a Game Boy Color emulator or a compatible writable cartridge. **The owner confirmed v0.3.0 boots on a Chromatic DevDay Edition. Full hardware gameplay/audio acceptance for this update is pending.** A regular commercial cartridge is not necessarily writable.
 
 | Control | Action |
 | --- | --- |
@@ -20,7 +20,7 @@ Download `open-monster.gbc` from [Releases](https://github.com/tinjyuu/open-mons
 | A | Interact / confirm / use a move |
 | B | Back; party in the field, auxiliary menu in battle |
 | START | Save in the field; credits on the title screen |
-| SELECT | Switch English / Japanese on the title screen |
+| SELECT | Switch English / Japanese at the title; mute / resume BGM during play |
 
 Choose Chapo, Amagumo or Tomori as your first companion. Press A near the starting building to enter camp. Train a style, then **equip the learned move**. Cross the river on the central path, explore the grass, scout wild creatures, and defeat the three trainers to the east.
 
@@ -30,7 +30,7 @@ You can keep six different species. Battles start with a healed party; losing re
 
 ## Gameplay video
 
-[Watch the 88-second gameplay recording (MP4)](https://github.com/tinjyuu/open-monster/releases/download/v0.3.0/open-monster-gameplay-v0.3.mp4). Real emulator execution, button inputs only, 30 fps; the prototype has no audio. To reproduce it, install ffmpeg, build the ROM, install the test dependencies, then run `.tools/venv/bin/python scripts/record_gameplay.py`.
+[Watch the 88-second gameplay recording (MP4)](https://github.com/tinjyuu/open-monster/releases/download/v0.3.1/open-monster-gameplay-v0.3.1.mp4). Real emulator execution, button inputs only, 30 fps, including the original Game Boy score. To reproduce it, install ffmpeg, build the ROM, install the test dependencies, then run `.tools/venv/bin/python scripts/record_gameplay.py`.
 
 ## Build and verify
 
@@ -42,7 +42,7 @@ make
 make test
 ```
 
-For an existing toolchain: `make GBDK_HOME=/path/to/gbdk`. `make test` also requires a native C compiler. The ROM is 64 KiB, GBC compatible, MBC5 + RAM + battery, with 8 KiB cartridge RAM.
+For an existing toolchain: `make GBDK_HOME=/path/to/gbdk`. `make test` also requires a native C compiler. The ROM is 128 KiB, GBC compatible, MBC5 + RAM + battery, with 8 KiB cartridge RAM.
 
 ```sh
 python3 -m venv .tools/venv
@@ -50,6 +50,7 @@ python3 -m venv .tools/venv
 .tools/venv/bin/python tests/emulator_test.py
 OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
+.tools/venv/bin/python tests/flicker_audio_test.py
 .tools/venv/bin/python tests/transparency_test.py
 ```
 
@@ -77,6 +78,8 @@ This layout is compatible with Weblate's JSON format. No external translation ac
 
 Unsupported or damaged saves are protected: the game allows a fresh unsaved journey but blocks writes to that cartridge's RAM. Back up your RAM file before upgrades.
 
-The prototype has no music, detailed battle animations, duplicate-species raising, storage boxes, multiplayer or full campaign yet. Additional languages need supported fonts and a ROM budget review.
+The prototype has detailed battle animations, duplicate-species raising, storage boxes, multiplayer or full campaign yet. Additional languages need supported fonts and a ROM budget review.
 
 Original code, setting data, pixels and font: [MIT](LICENSE). Linked GBDK library: GPLv2 with linking exception. [Dependency notices](docs/third-party.md).
+
+Two original looping tracks use the Game Boy pulse, wave and noise channels. See [music and score sources](docs/music.md). SELECT mutes/resumes during play; this preference lasts for the current session.

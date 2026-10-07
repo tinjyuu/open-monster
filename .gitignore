@@ -17,3 +17,5 @@ dist/video/
 
 dist/visual-fixture*
 dist/expected-*.ppm
+
+dist/music-preview.wav

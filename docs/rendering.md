@@ -21,3 +21,7 @@ Run `tests/transparency_test.py` after building and the other acceptance tests. 
 ## Design references
 
 The composition study used Nintendo's official screenshots of [The Minish Cap](https://www.nintendo.co.jp/event/e3/gbasoft/legendofzelda/index.html), [Golden Sun battles](https://www.nintendo.co.jp/n08/agsj/sento/index.html) and [Mario & Luigi RPG](https://www.nintendo.co.jp/n08/a88j/game/index.html): full scenery, compact edge status, contextual command icons, depth and shadows. No reference graphics are included in the game.
+
+## Continuous display
+
+Since v0.3.1, the LCD is disabled only during boot. Scene transitions prepare graphics in the other GBC VRAM bank and use the hidden tile map, then commit palettes, sprite mode, OAM and the visible map at VBlank. OAM DMA is paused while preparing sprites. Font tiles are initialized in both VRAM banks. Field movement updates only sprite coordinates while the context hint remains unchanged. This preserves the approved scene pixels while eliminating full-screen blanking on every step.

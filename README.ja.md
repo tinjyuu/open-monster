@@ -12,13 +12,13 @@
 
 ## 遊ぶ
 
-[ROMをダウンロード](https://github.com/tinjyuu/open-monster/raw/refs/heads/main/dist/open-monster.gbc)して、Game Boy Color対応エミュレーター、または対応する書き込み可能カートリッジで起動してください。Chromatic実機は**未検証**です。通常の市販カートリッジに自由に書き込めるとは限りません。
+[ROMをダウンロード](https://github.com/tinjyuu/open-monster/raw/refs/heads/main/dist/open-monster.gbc)して、Game Boy Color対応エミュレーター、または対応する書き込み可能カートリッジで起動してください。v0.3.0は吉海のChromatic DevDay Editionで起動確認済みです。この更新版の実機での通しプレイ・音楽の確認はまだ完了していません。通常の市販カートリッジに自由に書き込めるとは限りません。
 
 - **十字キー**：移動、メニュー選択。戦闘のカードは左右で選択。
 - **A**：調べる、選択、技の決定。
 - **B**：戻る。探索では仲間選択、戦闘では交代・スカウト・逃走。
 - **START**：探索中にセーブ。
-- **SELECT**：タイトル画面で日本語／英語を切り替え。STARTでクレジット案内。
+- **SELECT**：タイトル画面で日本語／英語を切り替え。プレイ中はBGMのミュート／再開。タイトルのSTARTでクレジット案内。
 
 相棒を選び、出発地点の建物の近くでAを押すと育成拠点に入れます。クンレンで技を習得したら、ワザノ クミカエで3つの技に装備してください。川は中央の道で渡れます。中央の草むらでは移動、またはAで野生のモンスターと出会えます。東側の3人の強者を倒すと試作の目標達成です。
 
@@ -36,7 +36,7 @@
 
 ## プレイ動画
 
-[約88秒のプレイ動画（MP4）](https://github.com/tinjyuu/open-monster/releases/download/v0.3.0/open-monster-gameplay-v0.3.mp4)。実際のROMをエミュレーターで操作した記録です。30fps、無音。再現する場合はFFmpegを用意し、`.tools/venv/bin/python scripts/record_gameplay.py` を実行します。
+[約88秒のプレイ動画（MP4）](https://github.com/tinjyuu/open-monster/releases/download/v0.3.1/open-monster-gameplay-v0.3.1.mp4)。実際のROMをエミュレーターで操作した記録です。30fps、オリジナルBGM付き。再現する場合はFFmpegを用意し、`.tools/venv/bin/python scripts/record_gameplay.py` を実行します。
 
 ## ビルド
 
@@ -47,7 +47,7 @@ python3 scripts/install_gbdk.py
 make
 ```
 
-手動でGBDKを配置する場合は `make GBDK_HOME=/path/to/gbdk`。成果物は `dist/open-monster.gbc`。64 KiB、GBC対応、MBC5 + RAM + battery、8 KiBのカートリッジRAMを宣言しています。
+手動でGBDKを配置する場合は `make GBDK_HOME=/path/to/gbdk`。成果物は `dist/open-monster.gbc`。128 KiB、GBC対応、MBC5 + RAM + battery、8 KiBのカートリッジRAMを宣言しています。
 
 ```sh
 make test
@@ -78,6 +78,8 @@ python3 -m venv .tools/venv
 
 独自コード・設定・画像・フォントは [MIT](LICENSE)。GBDKのリンクされるライブラリはGPLv2 + linking exceptionです。[外部依存の説明](docs/third-party.md)を参照してください。
 
-通信対戦、大規模な地方・物語、音楽、詳細な戦闘アニメーションは後続版の対象です。
+通信対戦、大規模な地方・物語、詳細な戦闘アニメーションは後続版の対象です。
 
 描画元データと透過検査は[描画仕様](docs/ja/rendering.md)を参照してください。
+
+探索・戦闘のオリジナルBGMを追加しました。プレイ中のSELECTでミュート／再開（設定は今回の起動中のみ）。[曲と音源の説明](docs/ja/music.md)。

@@ -1,5 +1,5 @@
 {
-  "file": "open-monster-gameplay-v0.3.mp4",
+  "file": "open-monster-gameplay-v0.3.1.mp4",
   "duration_seconds": 87.73,
   "fps": 30,
   "resolution": [
@@ -7,8 +7,9 @@
     576
   ],
   "source": "Actual ROM in PyBoy 2.6.1; button inputs only, no gameplay RAM changes",
-  "audio": false,
-  "rom_sha256": "ae452a4eaf18ca03f4e19a38d3933c30493d23488038978c08daf33b01df2045",
+  "audio": true,
+  "audio_timebase_ratio": 1.00125,
+  "rom_sha256": "f965ceb71dec49c7f29cb0b7b5a6d5322cc6c31a633338d060d2a86dfa1d8075",
   "chapters": [
     {
       "seconds": 0.0,

@@ -1,0 +1,14 @@
+{
+  "emulator": "PyBoy 2.6.1",
+  "gameplay_RAM_modified": false,
+  "frames_checked": 5108,
+  "movement_steps": 48,
+  "lcd_off_calls": 0,
+  "blank_white_frames": 0,
+  "tracks": [
+    "Trail Lanterns",
+    "Meet a Challenger"
+  ],
+  "mute_resume_passed": true,
+  "sample_rate": 48000
+}

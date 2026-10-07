@@ -11,3 +11,5 @@ Initial monsters: チャポ / アマグモ / トモリ / ネジマイ / カサ�
 Each contributed monster records its proposal, art and data authors in `authors`. Add the same credits here when merging a contribution. The game title's SELECT screen points to the public repository for full credits.
 
 Build toolchain: GBDK-2020 4.5.0. Emulator verification: PyBoy 2.6.1. Their licenses remain their own; see `docs/third-party.md`.
+
+Original score: Trail Lanterns / Meet a Challenger, composed with Codex for Open Monster; editable source in src/music.c, MIT.

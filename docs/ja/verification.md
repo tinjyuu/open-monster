@@ -8,7 +8,7 @@
 
 日本語・英語の両方で通しテストを実行します。タイトルの切り替えが実際の表示を変更すること、翻訳漏れ・文字数・対応文字も検査します。v0.1の保存領域との互換性を保ち、追加された言語設定も保存します。
 
-GBDK 4.5.0 / macOS arm64で64 KiBのGBC ROMをビルド。PyBoy 2.6.1で実行し、ゲームRAMを書き換えずボタン操作で以下を確認しました。
+GBDK 4.5.0 / macOS arm64で128 KiBのGBC ROMをビルド。PyBoy 2.6.1で実行し、ゲームRAMを書き換えずボタン操作で以下を確認しました。
 
 - 起動、相棒選択、探索、拠点への出入り。
 - 訓練で習得技を増やし、装備技を入れ替える。
@@ -30,6 +30,7 @@ python3 scripts/check_locales.py
 .tools/venv/bin/python tests/emulator_test.py
 OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
+.tools/venv/bin/python tests/flicker_audio_test.py
 .tools/venv/bin/python tests/transparency_test.py
 ```
 
@@ -37,10 +38,12 @@ OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 
 ## 実機と既知の制限
 
-**ChromaticおよびオリジナルGame Boy Color実機は未検証です。** 書き込み・保存対応のカートリッジを用意し、起動、パレット、操作、SRAM保存と電源再投入、3人の撃破を実機で確認する作業が残ります。
+**2026-10-08、吉海のChromatic DevDay Editionでv0.3.0の起動を確認し、移動時の点滅報告を受けました。この更新版の実機での通しプレイ・音楽、およびオリジナルGBCの検証は未完了です。** 書き込み・保存対応のカートリッジを用意し、起動、パレット、操作、SRAM保存と電源再投入、3人の撃破を実機で確認する作業が残ります。
 
-v0.3は短い試作です。独自のドット絵を使用し、音楽・効果音・詳細な戦闘アニメーションはありません。日本語はカタカナです。戦闘開始時に全員を回復するため、探索中の体力管理はありません。重複種の育成、仲間の預け入れ、通信対戦、物語・地方の拡張は未実装です。
+v0.3.1は短い試作です。独自のドット絵を使用し、探索・戦闘のBGMを搭載。効果音・詳細な戦闘アニメーションはありません。日本語はカタカナです。戦闘開始時に全員を回復するため、探索中の体力管理はありません。重複種の育成、仲間の預け入れ、通信対戦、物語・地方の拡張は未実装です。
 
 現在の同時所持上限は6体、種データ上限は24種です。追加した種は野生候補に入りますが、所持上限を超えた図鑑・保管機能は後続版で設計します。RAM形式はv1で、自動移行は行いません。
 
 建物・ロゴ・文字の空白・操作アイコン・6体の左右両向きを透過検査し、画素差分0を確認。[描画仕様](rendering.md)と `dist/alpha-verification.json` を参照してください。
+
+連続移動を含む5,108フレーム・48歩の検査で、起動後のLCD停止0回・全面白フレーム0。探索／戦闘の出音とミュート／再開も成功。結果は `dist/flicker-audio-verification.json`。

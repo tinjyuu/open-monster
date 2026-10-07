@@ -81,7 +81,7 @@ with tempfile.TemporaryDirectory()as td:
  results['sprite_scanline_limit']={'max':max(occupancy),'limit':10,'errors':0}
  p.stop(save=False)
 # Compile a test-only driver, leaving the playable ROM and gameplay state untouched.
-subprocess.run([str(ROOT/'.tools/gbdk/bin/lcc'),'-msm83:gb','-Wm-yC','-Wm-yt0x1B','-Wm-yo4','-Wm-ya1','-Wl-j','-o',str(ROOT/'dist/visual-fixture.gbc'),str(ROOT/'tests/visual_fixture.c'),str(ROOT/'src/core.c'),str(ROOT/'src/generated.c')],check=True,stdout=subprocess.DEVNULL)
+subprocess.run([str(ROOT/'.tools/gbdk/bin/lcc'),'-msm83:gb','-Wm-yC','-Wm-yt0x1B','-Wm-yo8','-Wm-ya1','-Wl-j','-Wl-b_HOME=0x0200','-Wl-b_CODE=0x0400','-o',str(ROOT/'dist/visual-fixture.gbc'),str(ROOT/'tests/visual_fixture.c'),str(ROOT/'src/core.c'),str(ROOT/'src/generated.c'),str(ROOT/'src/music.c')],check=True,stdout=subprocess.DEVNULL)
 q=PyBoy(str(ROOT/'dist/visual-fixture.gbc'),window='null',sound_emulated=False);q.set_emulation_speed(0);q.tick(240)
 checked=0
 for monster in sorted(mons.values(),key=lambda m:m['save_id']):
