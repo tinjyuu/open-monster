@@ -1,0 +1,462 @@
+{
+  "save.protected": {
+    "max_cells": 20,
+    "description": "save / protected"
+  },
+  "save.other_file": {
+    "max_cells": 20,
+    "description": "save / other_file"
+  },
+  "save.success": {
+    "max_cells": 20,
+    "description": "save / success"
+  },
+  "hint.save": {
+    "max_cells": 20,
+    "description": "hint / save"
+  },
+  "map.base": {
+    "max_cells": 20,
+    "description": "map / base"
+  },
+  "map.trainer_attack": {
+    "max_cells": 20,
+    "description": "map / trainer_attack"
+  },
+  "map.trainer_defense": {
+    "max_cells": 20,
+    "description": "map / trainer_defense"
+  },
+  "map.trainer_speed": {
+    "max_cells": 20,
+    "description": "map / trainer_speed"
+  },
+  "map.search": {
+    "max_cells": 20,
+    "description": "map / search"
+  },
+  "map.grass": {
+    "max_cells": 20,
+    "description": "map / grass"
+  },
+  "hint.world": {
+    "max_cells": 20,
+    "description": "hint / world"
+  },
+  "battle.switch": {
+    "max_cells": 6,
+    "description": "battle / switch"
+  },
+  "battle.scout": {
+    "max_cells": 6,
+    "description": "battle / scout"
+  },
+  "battle.run": {
+    "max_cells": 6,
+    "description": "battle / run"
+  },
+  "battle.next": {
+    "max_cells": 20,
+    "description": "battle / next"
+  },
+  "battle.dodge_locked": {
+    "max_cells": 20,
+    "description": "battle / dodge_locked"
+  },
+  "battle.evade": {
+    "max_cells": 20,
+    "description": "battle / evade"
+  },
+  "hint.battle_aux": {
+    "max_cells": 20,
+    "description": "hint / battle_aux"
+  },
+  "hint.battle": {
+    "max_cells": 20,
+    "description": "hint / battle"
+  },
+  "title.name": {
+    "max_cells": 18,
+    "description": "title / name"
+  },
+  "title.tagline1": {
+    "max_cells": 20,
+    "description": "title / tagline1"
+  },
+  "title.tagline2": {
+    "max_cells": 20,
+    "description": "title / tagline2"
+  },
+  "title.continue": {
+    "max_cells": 20,
+    "description": "title / continue"
+  },
+  "title.start": {
+    "max_cells": 20,
+    "description": "title / start"
+  },
+  "title.new": {
+    "max_cells": 20,
+    "description": "title / new"
+  },
+  "save.wrong_version": {
+    "max_cells": 20,
+    "description": "save / wrong_version"
+  },
+  "save.corrupt": {
+    "max_cells": 20,
+    "description": "save / corrupt"
+  },
+  "save.play_without": {
+    "max_cells": 20,
+    "description": "save / play_without"
+  },
+  "new.confirm": {
+    "max_cells": 20,
+    "description": "new / confirm"
+  },
+  "new.warning1": {
+    "max_cells": 20,
+    "description": "new / warning1"
+  },
+  "new.warning2": {
+    "max_cells": 20,
+    "description": "new / warning2"
+  },
+  "hint.new": {
+    "max_cells": 20,
+    "description": "hint / new"
+  },
+  "starter.choose": {
+    "max_cells": 20,
+    "description": "starter / choose"
+  },
+  "starter.arrows": {
+    "max_cells": 20,
+    "description": "starter / arrows"
+  },
+  "hint.starter": {
+    "max_cells": 20,
+    "description": "hint / starter"
+  },
+  "menu.train": {
+    "max_cells": 20,
+    "description": "menu / train"
+  },
+  "menu.loadout": {
+    "max_cells": 20,
+    "description": "menu / loadout"
+  },
+  "menu.party": {
+    "max_cells": 20,
+    "description": "menu / party"
+  },
+  "menu.rest": {
+    "max_cells": 20,
+    "description": "menu / rest"
+  },
+  "menu.save": {
+    "max_cells": 20,
+    "description": "menu / save"
+  },
+  "menu.leave": {
+    "max_cells": 20,
+    "description": "menu / leave"
+  },
+  "base.name": {
+    "max_cells": 20,
+    "description": "base / name"
+  },
+  "hint.menu": {
+    "max_cells": 20,
+    "description": "hint / menu"
+  },
+  "training.attack": {
+    "max_cells": 20,
+    "description": "training / attack"
+  },
+  "training.defense": {
+    "max_cells": 20,
+    "description": "training / defense"
+  },
+  "training.technique": {
+    "max_cells": 20,
+    "description": "training / technique"
+  },
+  "training.choose": {
+    "max_cells": 20,
+    "description": "training / choose"
+  },
+  "training.effect": {
+    "max_cells": 20,
+    "description": "training / effect"
+  },
+  "training.change": {
+    "max_cells": 20,
+    "description": "training / change"
+  },
+  "hint.training": {
+    "max_cells": 20,
+    "description": "hint / training"
+  },
+  "loadout.slot": {
+    "max_cells": 20,
+    "description": "loadout / slot"
+  },
+  "hint.loadout": {
+    "max_cells": 20,
+    "description": "hint / loadout"
+  },
+  "loadout.known": {
+    "max_cells": 20,
+    "description": "loadout / known"
+  },
+  "hint.equip": {
+    "max_cells": 20,
+    "description": "hint / equip"
+  },
+  "party.switch": {
+    "max_cells": 20,
+    "description": "party / switch"
+  },
+  "party.choose": {
+    "max_cells": 20,
+    "description": "party / choose"
+  },
+  "hint.party": {
+    "max_cells": 20,
+    "description": "hint / party"
+  },
+  "hint.continue": {
+    "max_cells": 20,
+    "description": "hint / continue"
+  },
+  "hint.back": {
+    "max_cells": 20,
+    "description": "hint / back"
+  },
+  "victory.all": {
+    "max_cells": 20,
+    "description": "victory / all"
+  },
+  "victory.journey": {
+    "max_cells": 20,
+    "description": "victory / journey"
+  },
+  "victory.badge": {
+    "max_cells": 20,
+    "description": "victory / badge"
+  },
+  "victory.growth": {
+    "max_cells": 20,
+    "description": "victory / growth"
+  },
+  "victory.wild": {
+    "max_cells": 20,
+    "description": "victory / wild"
+  },
+  "rest.camp": {
+    "max_cells": 20,
+    "description": "rest / camp"
+  },
+  "rest.party": {
+    "max_cells": 20,
+    "description": "rest / party"
+  },
+  "journey.begin": {
+    "max_cells": 20,
+    "description": "journey / begin"
+  },
+  "hint.journey": {
+    "max_cells": 20,
+    "description": "hint / journey"
+  },
+  "rest.before": {
+    "max_cells": 20,
+    "description": "rest / before"
+  },
+  "training.done": {
+    "max_cells": 20,
+    "description": "training / done"
+  },
+  "training.equip": {
+    "max_cells": 20,
+    "description": "training / equip"
+  },
+  "loadout.duplicate": {
+    "max_cells": 20,
+    "description": "loadout / duplicate"
+  },
+  "loadout.other": {
+    "max_cells": 20,
+    "description": "loadout / other"
+  },
+  "party.invalid": {
+    "max_cells": 20,
+    "description": "party / invalid"
+  },
+  "party.other": {
+    "max_cells": 20,
+    "description": "party / other"
+  },
+  "battle.cooldown": {
+    "max_cells": 20,
+    "description": "battle / cooldown"
+  },
+  "battle.left": {
+    "max_cells": 20,
+    "description": "battle / left"
+  },
+  "battle.train_tip": {
+    "max_cells": 20,
+    "description": "battle / train_tip"
+  },
+  "scout.trainer": {
+    "max_cells": 20,
+    "description": "scout / trainer"
+  },
+  "scout.wild_only": {
+    "max_cells": 20,
+    "description": "scout / wild_only"
+  },
+  "scout.success": {
+    "max_cells": 20,
+    "description": "scout / success"
+  },
+  "scout.party_hint": {
+    "max_cells": 20,
+    "description": "scout / party_hint"
+  },
+  "scout.full": {
+    "max_cells": 20,
+    "description": "scout / full"
+  },
+  "scout.unavailable": {
+    "max_cells": 20,
+    "description": "scout / unavailable"
+  },
+  "scout.duplicate": {
+    "max_cells": 20,
+    "description": "scout / duplicate"
+  },
+  "scout.other": {
+    "max_cells": 20,
+    "description": "scout / other"
+  },
+  "scout.failed": {
+    "max_cells": 20,
+    "description": "scout / failed"
+  },
+  "scout.weaken": {
+    "max_cells": 20,
+    "description": "scout / weaken"
+  },
+  "title.controls": {
+    "max_cells": 20,
+    "description": "title / controls"
+  },
+  "about.tagline": {
+    "max_cells": 20,
+    "description": "about / tagline"
+  },
+  "about.credits": {
+    "max_cells": 20,
+    "description": "about / credits"
+  },
+  "monsters.kasamo.name": {
+    "max_cells": 8,
+    "description": "Monster kasamo name"
+  },
+  "monsters.kasamo.bio": {
+    "max_cells": 18,
+    "description": "Monster kasamo bio"
+  },
+  "monsters.tikutaku.name": {
+    "max_cells": 8,
+    "description": "Monster tikutaku name"
+  },
+  "monsters.tikutaku.bio": {
+    "max_cells": 18,
+    "description": "Monster tikutaku bio"
+  },
+  "monsters.neji.name": {
+    "max_cells": 8,
+    "description": "Monster neji name"
+  },
+  "monsters.neji.bio": {
+    "max_cells": 18,
+    "description": "Monster neji bio"
+  },
+  "monsters.amagumo.name": {
+    "max_cells": 8,
+    "description": "Monster amagumo name"
+  },
+  "monsters.amagumo.bio": {
+    "max_cells": 18,
+    "description": "Monster amagumo bio"
+  },
+  "monsters.tomori.name": {
+    "max_cells": 8,
+    "description": "Monster tomori name"
+  },
+  "monsters.tomori.bio": {
+    "max_cells": 18,
+    "description": "Monster tomori bio"
+  },
+  "monsters.chapo.name": {
+    "max_cells": 8,
+    "description": "Monster chapo name"
+  },
+  "monsters.chapo.bio": {
+    "max_cells": 18,
+    "description": "Monster chapo bio"
+  },
+  "moves.puff.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.bash.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.spark.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.rain.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.guard.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.dodge.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.mend.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.rush.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.crush.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.focus.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.pierce.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  },
+  "moves.drain.name": {
+    "max_cells": 6,
+    "description": "Battle action card title"
+  }
+}

@@ -1,11 +1,13 @@
 """Button-driven ROM acceptance test; symbols are read only, no gameplay RAM cheats."""
 from pathlib import Path
-import json,shutil,tempfile
+import json,shutil,tempfile,os
 from pyboy import PyBoy
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 SYMS={line.split()[1]:int(line.split()[2],16) for line in (ROOT/'dist/open-monster.noi').read_text().splitlines() if line.startswith('DEF ')}
 OUT=ROOT/'dist'
+LANGUAGE=os.environ.get('OPEN_MONSTER_LOCALE','en')
+assert LANGUAGE in ['en','ja']
 
 def run():
  with tempfile.TemporaryDirectory() as td:
@@ -14,7 +16,7 @@ def run():
   def read(name,off=0):return p.memory[SYMS['_'+name]+off]
   def state():return read('state')
   def press(key):p.button_press(key);p.tick(8);p.button_release(key);p.tick(40)
-  def shot(name):p.tick(60);p.screen.image.save(OUT/f'{name}-160.png');p.screen.image.resize((640,576),Image.Resampling.NEAREST).save(OUT/f'{name}-preview.png')
+  def shot(name):p.tick(60);p.screen.image.save(OUT/f'{name}-{LANGUAGE}-160.png');p.screen.image.resize((640,576),Image.Resampling.NEAREST).save(OUT/f'{name}-{LANGUAGE}-preview.png')
   def ack():
    if state()==10:press('a')
   def walk(axis,target):
@@ -25,7 +27,11 @@ def run():
     assert state()==2,(state(),axis,target,v)
     press(('right'if target>v else'left')if axis=='x'else('down'if target>v else'up'))
    raise AssertionError(('blocked',axis,target,read('game',off)))
-  assert state()==0;shot('title');press('a');assert state()==1;press('a');ack();assert state()==2;shot('world')
+  assert state()==0
+  if LANGUAGE=='ja':press('select')
+  font=list(json.loads((ROOT/'assets/font.json').read_text()))+list('ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポァィゥェォッャュョ')
+  assert read('screen',201)==font.index('Y' if LANGUAGE=='en' else 'ミ'),'Locale switch did not update title'
+  shot('title');press('a');assert state()==1;press('a');ack();assert state()==2;shot('world')
   # Training + loadout via actual menus.
   press('a');assert state()==3;press('a');assert state()==4;shot('training');press('a');ack();assert read('game',7+4)==1
   press('down');press('a');assert state()==5;press('a');assert state()==6
@@ -95,6 +101,6 @@ def run():
    z.memory[0x0000]=0x0a  # MBC RAM enable for observation only; no SRAM contents changed.
    assert bytes(z.memory[0xa000:0xa000+90])==bytes(ram[:90]),'Protected SRAM overwritten'
    z.stop(save=False)
-  result=dict(rom='open-monster.gbc',emulator='PyBoy 2.6.1',passed=['boot','starter','training','loadout','exploration','wild battle','scout','switch','all 3 trainers','loss recovery','progression','save/restart','incompatible save protected','corrupt save protected'],wild_battles=battles,hardware_tested=False)
-  (OUT/'verification.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
+  result=dict(rom='open-monster.gbc',emulator='PyBoy 2.6.1',passed=['boot','starter','training','loadout','exploration','wild battle','scout','switch','all 3 trainers','loss recovery','progression','save/restart','incompatible save protected','corrupt save protected'],wild_battles=battles,hardware_tested=False,language=LANGUAGE)
+  (OUT/f'verification-{LANGUAGE}.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result,indent=2))
 if __name__=='__main__':run()

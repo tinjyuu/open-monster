@@ -4,13 +4,21 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('build_data',ROOT/'scripts/build_data.py');bd=importlib.util.module_from_spec(spec);spec.loader.exec_module(bd)
 class ContentTests(unittest.TestCase):
  def setUp(self):
-  self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);shutil.copytree(ROOT/'data',self.root/'data')
+  self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name);shutil.copytree(ROOT/'data',self.root/'data');shutil.copytree(ROOT/'locales',self.root/'locales');shutil.copytree(ROOT/'assets',self.root/'assets')
  def tearDown(self):self.tmp.cleanup()
  def sample(self,**changes):
   d=json.loads((self.root/'data/monsters/chapo.json').read_text());d.update(changes);return d
- def write(self,d,name='new'): (self.root/f'data/monsters/{name}.json').write_text(json.dumps(d,ensure_ascii=False))
+ def write(self,d,name='new'):
+  (self.root/f'data/monsters/{name}.json').write_text(json.dumps(d,ensure_ascii=False))
+  for field,limit in [('name',8),('bio',18)]:
+   key=d[field]
+   ctx=json.loads((self.root/'locales/context.json').read_text())
+   if key not in ctx:
+    ctx[key]={'max_cells':limit,'description':'Test monster'};(self.root/'locales/context.json').write_text(json.dumps(ctx))
+    for lang,text in [('en','SAMPLE'),('ja','サンプル')]:
+     path=self.root/f'locales/{lang}.json';cat=json.loads(path.read_text());cat[key]=text;path.write_text(json.dumps(cat))
  def test_seventh_monster_without_engine_change(self):
-  self.write(self.sample(id='sample',save_id=6,starter=False,name='サンプル'));moves,mons=bd.content(self.root);self.assertEqual(len(mons),7);self.assertEqual(mons[-1]['save_id'],6)
+  self.write(self.sample(id='sample',save_id=6,starter=False,name='monsters.sample.name',bio='monsters.sample.bio'));moves,mons=bd.content(self.root);self.assertEqual(len(mons),7);self.assertEqual(mons[-1]['save_id'],6)
  def test_duplicate_id_rejected(self):
   self.write(self.sample(save_id=6,starter=False));self.assertRaises(AssertionError,bd.content,self.root)
  def test_duplicate_save_id_rejected(self):

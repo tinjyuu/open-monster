@@ -1,84 +1,84 @@
 [
   {
     "id": "puff",
-    "name": "ユゲ",
+    "name": "moves.puff.name",
     "power": 8,
     "priority": 0,
     "effect": "attack"
   },
   {
     "id": "bash",
-    "name": "タイアタリ",
+    "name": "moves.bash.name",
     "power": 10,
     "priority": -1,
     "effect": "attack"
   },
   {
     "id": "spark",
-    "name": "ヒバナ",
+    "name": "moves.spark.name",
     "power": 8,
     "priority": 0,
     "effect": "attack"
   },
   {
     "id": "rain",
-    "name": "コサメ",
+    "name": "moves.rain.name",
     "power": 7,
     "priority": 1,
     "effect": "attack"
   },
   {
     "id": "guard",
-    "name": "マモル",
+    "name": "moves.guard.name",
     "power": 0,
     "priority": 4,
     "effect": "guard"
   },
   {
     "id": "dodge",
-    "name": "カワス",
+    "name": "moves.dodge.name",
     "power": 0,
     "priority": 5,
     "effect": "dodge"
   },
   {
     "id": "mend",
-    "name": "ヒトヤスミ",
+    "name": "moves.mend.name",
     "power": 7,
     "priority": -2,
     "effect": "heal"
   },
   {
     "id": "rush",
-    "name": "ハヤワザ",
+    "name": "moves.rush.name",
     "power": 5,
     "priority": 3,
     "effect": "attack"
   },
   {
     "id": "crush",
-    "name": "ドスン",
+    "name": "moves.crush.name",
     "power": 15,
     "priority": -3,
     "effect": "attack"
   },
   {
     "id": "focus",
-    "name": "タメル",
+    "name": "moves.focus.name",
     "power": 0,
     "priority": 2,
     "effect": "focus"
   },
   {
     "id": "pierce",
-    "name": "ツラヌク",
+    "name": "moves.pierce.name",
     "power": 7,
     "priority": 0,
     "effect": "pierce"
   },
   {
     "id": "drain",
-    "name": "スイトリ",
+    "name": "moves.drain.name",
     "power": 6,
     "priority": 0,
     "effect": "drain"

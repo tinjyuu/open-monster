@@ -19,7 +19,8 @@ int main(void){Fighter a,b,base;Game g,loaded;Monster m;uint8_t p[SAVE_BYTES],hi
  m=mon(0,1);assert(train_mon(&m,2));assert(m.known==4);assert(known_move(&m,3)==10);assert(train_mon(&m,0));assert(m.known==5);assert(known_move(&m,3)==8);assert(known_move(&m,4)==10);assert(!train_mon(&m,3));reward(&m,255);assert(m.level==5&&m.xp==0);
  new_game(&g,0);b=f(1);for(i=0;i<250;i++){g.count=1;result=scout(&g,&b);if(result==1)successes_hi++;}b.hp=1;for(i=0;i<250;i++){g.count=1;result=scout(&g,&b);if(result==1)successes_low++;}assert(successes_low>successes_hi*2);
  g.count=6;assert(scout(&g,&b)==2);g.count=1;g.party[0].species=1;assert(scout(&g,&b)==3);
- new_game(&g,2);train_mon(&g.party[0],0);g.party[0].moves[0]=8;g.badges=7;encode_save(&g,p);assert(decode_save(&loaded,p)==SAVE_OK);assert(memcmp(&g,&loaded,sizeof(g))==0);
+ new_game(&g,2);train_mon(&g.party[0],0);g.party[0].moves[0]=8;g.badges=7;g.language=1;encode_save(&g,p);assert(decode_save(&loaded,p)==SAVE_OK);assert(memcmp(&g,&loaded,sizeof(g))==0);
+ p[10]=0;reseal(p);assert(decode_save(&loaded,p)==SAVE_OK&&loaded.language==0);encode_save(&g,p);p[10]=2;reseal(p);assert(decode_save(&loaded,p)==SAVE_INCOMPATIBLE);encode_save(&g,p);assert(decode_save(&loaded,p)==SAVE_OK);
  p[2]=99;assert(decode_save(&loaded,p)==SAVE_INCOMPATIBLE);assert(memcmp(&g,&loaded,sizeof(g))==0);
  encode_save(&g,p);p[20]^=4;assert(decode_save(&loaded,p)==SAVE_CORRUPT);
  encode_save(&g,p);p[12]=250;reseal(p);assert(decode_save(&loaded,p)==SAVE_INCOMPATIBLE);

@@ -9,3 +9,8 @@ dist/*.sym
 dist/*.sav
 dist/*.state
 .DS_Store
+
+src/locale_ids.h
+assets/drafts/
+
+dist/video/

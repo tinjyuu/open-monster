@@ -1,13 +1,16 @@
-## この子の個性 / 変更の目的
+## Creature identity / purpose of this change
 
-## 作者と共同作者
+## Authors and collaborators
 
-## 動作確認
+## Verification
 
-- [ ] make test / make
-- [ ] 出会い・スカウト・育成・対戦
-- [ ] 160×144で読める画面のスクリーンショット
-- [ ] オリジナル作品で、MITで公開できる
-- [ ] save_idと既存の技IDを変更していない
+- [ ] `make test && make`
+- [ ] Encounter, scout, train and battle
+- [ ] English and Japanese translations fit their display limits
+- [ ] Actual 160×144 screenshots
+- [ ] Original work that can be shared under MIT
+- [ ] Permanent species IDs and existing move IDs remain stable
 
-Chromatic実機確認: 未確認 / 確認済み（環境を記載）
+Real hardware: Not tested / Tested (describe the device and cartridge)
+
+日本語での提案も歓迎します。日本語の手順は CONTRIBUTING.ja.md を参照してください。

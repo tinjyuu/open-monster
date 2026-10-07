@@ -49,7 +49,7 @@ uint8_t enemy_move(Game *g,const Fighter *e,uint8_t trainer){uint8_t idx;
  return e->mon.moves[idx];
 }
 static uint16_t checksum(const uint8_t *p){uint8_t i;uint16_t c=0x51a7;for(i=0;i<SAVE_BYTES-2;i++)c=(uint16_t)((c<<1)|(c>>15))^p[i];return c;}
-void encode_save(const Game *g,uint8_t *p){uint8_t i,j,o=12;uint16_t c;memset(p,0,SAVE_BYTES);p[0]='O';p[1]='M';p[2]=SAVE_VERSION;p[3]=g->count;p[4]=g->active;p[5]=g->badges;p[6]=g->x;p[7]=g->y;p[8]=g->rng;p[9]=g->rng>>8;
+void encode_save(const Game *g,uint8_t *p){uint8_t i,j,o=12;uint16_t c;memset(p,0,SAVE_BYTES);p[0]='O';p[1]='M';p[2]=SAVE_VERSION;p[3]=g->count;p[4]=g->active;p[5]=g->badges;p[6]=g->x;p[7]=g->y;p[8]=g->rng;p[9]=g->rng>>8;p[10]=g->language;
  for(i=0;i<g->count;i++){const Monster*m=&g->party[i];p[o++]=species[m->species].save_id;p[o++]=m->level;p[o++]=m->xp;p[o++]=m->training;p[o++]=m->known;for(j=0;j<3;j++)p[o++]=m->moves[j];}
  c=checksum(p);p[SAVE_BYTES-2]=c;p[SAVE_BYTES-1]=c>>8;
 }
@@ -57,7 +57,7 @@ uint8_t decode_save(Game *g,const uint8_t*p){uint8_t i,j,s,o=12;uint16_t c;Game 
  if(p[0]!='O'||p[1]!='M'){for(i=0;i<SAVE_BYTES;i++)if(p[i]!=0&&p[i]!=255)return SAVE_CORRUPT;return SAVE_EMPTY;}
  if(p[2]!=SAVE_VERSION)return SAVE_INCOMPATIBLE;
  c=p[SAVE_BYTES-2]|((uint16_t)p[SAVE_BYTES-1]<<8);if(c!=checksum(p))return SAVE_CORRUPT;
- memset(&temp,0,sizeof(temp));temp.count=p[3];temp.active=p[4];temp.badges=p[5];temp.x=p[6];temp.y=p[7];temp.rng=p[8]|((uint16_t)p[9]<<8);
+ memset(&temp,0,sizeof(temp));temp.language=p[10];if(temp.language>=LOCALE_COUNT)return SAVE_INCOMPATIBLE;temp.count=p[3];temp.active=p[4];temp.badges=p[5];temp.x=p[6];temp.y=p[7];temp.rng=p[8]|((uint16_t)p[9]<<8);
  if(!temp.count||temp.count>PARTY_MAX||temp.active>=temp.count||temp.badges>7||temp.x>18||temp.x<1||temp.y>12||temp.y<1)return SAVE_CORRUPT;
  for(i=0;i<temp.count;i++){Monster*m=&temp.party[i];for(s=0;s<species_count;s++)if(species[s].save_id==p[o])break;if(s==species_count)return SAVE_INCOMPATIBLE;o++;m->species=s;m->level=p[o++];m->xp=p[o++];m->training=p[o++];m->known=p[o++];if(!m->level||m->level>5||(m->training>2&&m->training!=255)||m->known>7||m->xp>=m->level*12)return SAVE_CORRUPT;
  for(j=0;j<3;j++){uint8_t k,found=0;m->moves[j]=p[o++];for(k=0;k<6;k++)if(known_move(m,k)==m->moves[j])found=1;if(m->moves[j]>=move_count||!found)return SAVE_CORRUPT;}}

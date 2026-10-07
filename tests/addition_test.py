@@ -5,9 +5,12 @@ from pyboy import PyBoy
 ROOT=Path(__file__).resolve().parents[1]
 with tempfile.TemporaryDirectory() as td:
  root=Path(td)
- for name in ['src','scripts','data','assets']:shutil.copytree(ROOT/name,root/name,ignore=shutil.ignore_patterns('__pycache__','generated.*'))
+ for name in ['src','scripts','data','assets','locales']:shutil.copytree(ROOT/name,root/name,ignore=shutil.ignore_patterns('__pycache__','generated.*'))
  shutil.copy(ROOT/'Makefile',root/'Makefile');(root/'dist').mkdir()
- monster=json.loads((root/'data/monsters/chapo.json').read_text());monster.update(id='sample',save_id=6,name='サンプル',bio='タビヲ スル キュウス',starter=False,authors=['Test fixture'])
+ monster=json.loads((root/'data/monsters/chapo.json').read_text());monster.update(id='sample',save_id=6,name='monsters.sample.name',bio='monsters.sample.bio',starter=False,authors=['Test fixture'])
+ for lang in ['en','ja']:
+  path=root/f'locales/{lang}.json';cat=json.loads(path.read_text());cat['monsters.sample.name']='SAMPLE' if lang=='en' else 'サンプル';cat['monsters.sample.bio']='A TRAVELING TEAPOT' if lang=='en' else 'タビヲ スル キュウス';path.write_text(json.dumps(cat))
+ ctx=json.loads((root/'locales/context.json').read_text());ctx['monsters.sample.name']={'max_cells':8,'description':'Sample name'};ctx['monsters.sample.bio']={'max_cells':18,'description':'Sample bio'};(root/'locales/context.json').write_text(json.dumps(ctx))
  (root/'data/monsters/sample.json').write_text(json.dumps(monster,ensure_ascii=False))
  subprocess.run(['make','-C',str(root),'GBDK_HOME='+str(ROOT/'.tools/gbdk')],check=True,stdout=subprocess.DEVNULL)
  syms={l.split()[1]:int(l.split()[2],16)for l in(root/'dist/open-monster.noi').read_text().splitlines()if l.startswith('DEF ')}

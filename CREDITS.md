@@ -2,7 +2,9 @@
 
 Project owner / maintainer: tinjyuu（吉海）
 
-v0.1 prototype code, original pixel drawings, original 8×8 font and initial monster concepts: created with Codex for Open Monster, released under MIT.
+Prototype code, original pixel drawings, original 8×8 font and initial monster concepts: created with Codex for Open Monster, released under MIT.
+
+Native 32×32 art revised after maintainer review. Selected Chapo A / Amagumo A and the other four reviewed proposals are stored as editable indexed pixel rows in their JSON files.
 
 Initial monsters: チャポ / アマグモ / トモリ / ネジマイ / カサモ / チクタク。
 

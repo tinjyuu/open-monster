@@ -1,37 +1,30 @@
-# v0.1 検証記録
+# Verification
 
-検証日: 2026-10-07（日本時間）
+[English](verification.md) · [日本語](ja/verification.md)
 
-## 確認できたこと
+The ROM is built with GBDK 4.5.0. Native C tests cover all move effects, defense, dodge cooldown, piercing, focus, recovery, drain, training, progression, scouting and save validation. Content/localization tests reject invalid IDs, stats, pixels, missing translations, unsupported glyphs and overflowing text.
 
-GBDK 4.5.0 / macOS arm64で64 KiBのGBC ROMをビルド。PyBoy 2.6.1で実行し、ゲームRAMを書き換えずボタン操作で以下を確認しました。
+PyBoy 2.6.1 acceptance runs use actual button input, without editing gameplay RAM. English and Japanese both cover:
 
-- 起動、相棒選択、探索、拠点への出入り。
-- 訓練で習得技を増やし、装備技を入れ替える。
-- 野生戦、逃走、スカウト、仲間への交代。
-- Lv1で強敵に敗北し、仲間を失わず拠点に復帰。
-- 野生戦で経験値を獲得してLv5になり、3人の強者を全員撃破。
-- カートリッジRAMへの保存後、エミュレーターを再起動して仲間と達成状態を復元。
-- 非対応バージョンと破損RAMの試験用カートリッジでは、保存操作後も元データが変化しない。
+- Boot, title language selection, starter selection, exploration and camp.
+- Training and equipping a learned move.
+- Wild battle, fleeing, scouting and party switching.
+- Losing to a stronger trainer and recovering at camp.
+- Progressing to level five and defeating all three CPU trainers.
+- SRAM persistence across emulator restarts.
+- Unsupported/corrupt saves remaining unchanged after a save attempt.
 
-ネイティブCテストでは12技の各効果、防御半減、回避と連続制限、貫通、回復、溜め、吸収、訓練の変更、レベル上限、スカウト成功率、上限/重複、保存チェックサムと不正データの拒否を検証しています。
-
-`tests/addition_test.py` は隔離したコピーに7体目のJSONを追加し、ゲーム本体を変更せずROMをビルド。実際に野生で出会い、仲間にできることを確認しました。元の配布ROMは6種のままです。
-
-再現コマンド:
+`tests/addition_test.py` builds an isolated ROM with a seventh creature, then encounters and recruits it without editing engine source. The distributed game remains the six-species prototype.
 
 ```sh
 make test && make
 .tools/venv/bin/python tests/emulator_test.py
+OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
 .tools/venv/bin/python tests/addition_test.py
 ```
 
-実際の160×144画面と4倍の整数拡大画像を `dist/` に収録。画像生成によるコンセプト画ではなく、ROMから取得した画像です。機械可読結果は `dist/verification.json`。
+Actual ROM frames are in `dist/*-en-160.png` and `*-ja-160.png`; 4× previews use nearest-neighbor scaling. Results are recorded separately in `verification-en.json` and `verification-ja.json`. These are emulator frames, not generated concept art.
 
-## 実機と既知の制限
+**Chromatic and original Game Boy Color hardware have not been tested.** A hardware pass still needs boot, palettes, controls, writable cartridge compatibility, saving across power cycles and completing the three challenges.
 
-**ChromaticおよびオリジナルGame Boy Color実機は未検証です。** 書き込み・保存対応のカートリッジを用意し、起動、パレット、操作、SRAM保存と電源再投入、3人の撃破を実機で確認する作業が残ります。
-
-v0.1は短い試作です。グラフィックは簡素なオリジナルのドット絵で、音楽・効果音・詳細な戦闘アニメーションはありません。日本語はカタカナです。戦闘開始時に全員を回復するため、探索中の体力管理はありません。重複種の育成、仲間の預け入れ、通信対戦、物語・地方の拡張は未実装です。
-
-現在の同時所持上限は6体、種データ上限は24種です。追加した種は野生候補に入りますが、所持上限を超えた図鑑・保管機能は後続版で設計します。RAM形式はv1で、自動移行は行いません。
+Prototype limitations: no audio, detailed battle animation, multiplayer, storage boxes, duplicate-species raising or full campaign. Every battle heals the party at its start. Six creatures can be held; data capacity is subject to validation and ROM budget. Saves remain v1; incompatible files are protected, with no automatic destructive migration.

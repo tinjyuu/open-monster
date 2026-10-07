@@ -1,37 +1,37 @@
-name: モンスターのアイデア
-description: 設定やラフだけでも参加できます。
+name: Monster idea / English
+description: Join with a concept or sketch; no code required.
 title: "[Monster] "
 body:
   - type: input
     id: name
     attributes:
-      label: モンスターの名前
+      label: Creature name
     validations:
       required: true
   - type: textarea
     id: life
     attributes:
-      label: 性格・生態・暮らす場所
-      description: どんな子でしょう？ ラフも添付できます。
+      label: Personality, habitat and everyday life
+      description: What makes this creature interesting? Attach a sketch if you have one.
     validations:
       required: true
   - type: textarea
     id: battle
     attributes:
-      label: 戦い方の個性・得意なこと・弱点
+      label: Fighting style, strengths and weaknesses
   - type: textarea
     id: help
     attributes:
-      label: 一緒に作ってほしい部分
-      description: 絵、技、能力値、実装など。
+      label: Where would you like help?
+      description: Art, writing, moves, balancing, implementation or testing.
   - type: input
     id: credits
     attributes:
-      label: 作者・共同作者
+      label: Authors and collaborators
   - type: checkboxes
     id: originality
     attributes:
-      label: 創作と公開
+      label: Original work and sharing
       options:
-        - label: 自作のオリジナルで、完成した投稿をMITライセンスで共有する意思があります。
+        - label: This is original work that I intend to share under MIT when completed.
           required: true

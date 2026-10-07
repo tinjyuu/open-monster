@@ -1,6 +1,7 @@
 #ifndef CORE_H
 #define CORE_H
 #include <stdint.h>
+#include "locale_ids.h"
 #define PARTY_MAX 6
 #define SAVE_VERSION 1
 #define SPECIES_LIMIT 24
@@ -24,10 +25,10 @@
 #define SAVE_CORRUPT 3
 #define SAVE_BYTES 90
 
-typedef struct { const char *name; uint8_t power; int8_t priority; uint8_t effect; } Move;
-typedef struct { const char *name; const char *bio; uint8_t save_id, trait, starter; uint8_t hp,attack,defense,speed; uint8_t base[3],training[3]; uint16_t palette[4]; const uint8_t *art; const uint8_t *small; } Species;
+typedef struct { const char *name[LOCALE_COUNT]; uint8_t power; int8_t priority; uint8_t effect; } Move;
+typedef struct { const char *name[LOCALE_COUNT]; const char *bio[LOCALE_COUNT]; uint8_t save_id, trait, starter; uint8_t hp,attack,defense,speed; uint8_t base[3],training[3]; uint16_t palette[4]; const uint8_t *art; const uint8_t *small; } Species;
 typedef struct { uint8_t species,level,xp,training,known; uint8_t moves[3]; } Monster;
-typedef struct { uint8_t count,active,badges,x,y; uint16_t rng; Monster party[PARTY_MAX]; } Game;
+typedef struct { uint8_t count,active,badges,x,y; uint16_t rng; Monster party[PARTY_MAX]; uint8_t language; } Game;
 typedef struct { Monster mon; uint8_t hp,guard,dodge,focused,last_dodge; } Fighter;
 extern const Move moves[];
 extern const Species species[];

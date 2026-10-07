@@ -1,42 +1,41 @@
-# モンスターデータ v1
+# Monster data v1
 
-JSONひとつで通常のモンスターを追加できます。元の16×16ドット絵をバトルでは整数倍して32×32、探索では16×16として使います。
+[English](monster-format.md) · [日本語](ja/monster-format.md)
 
-| 項目 | 内容 |
+Ordinary species additions are content-only. Each JSON uses existing moves/traits and source pixel rows. All labels are localization keys.
+
+| Field | Meaning |
 | --- | --- |
-| id | 一意の英小文字・数字・`_`・`-`。英小文字で開始 |
-| save_id | 永続ID。0〜254、重複禁止。既存IDは変更しない |
-| name / bio | 名前は8文字以下、生態は18文字以下。独自フォントにあるカタカナ・英大文字・数字・空白を使用 |
-| starter | 追加モンスターはfalse。初期3種のみtrue |
-| stats | hp:24〜40、attack/defense/speed:5〜13、合計70以下 |
-| base_moves | 3つ。攻撃系の技、guard、dodgeの順 |
-| training | attack、defense、techniqueごとに既存技IDを指定 |
-| trait | steam、rain、warm、shell、spore、quickのいずれか |
-| palette | 4色の`#RRGGBB`。0背景/透明、1輪郭、2体色、3明色 |
-| pixels | 16行×16文字。`.`=背景/透明、`1`=輪郭、`2`=体色、`3`=明色 |
-| authors | 投稿者・共同作者名の配列 |
+| `id` | Unique lowercase identifier; starts with a letter, then letters, digits, `_` or `-` |
+| `save_id` | Permanent integer 0–254. Baseline 0–5 are reserved; never renumber |
+| `name`, `bio` | Keys such as `monsters.sample.name` and `monsters.sample.bio`, present in both catalogs and context |
+| `starter` | `false` for additions; the first three baseline species remain starters |
+| `stats` | Integer HP 24–40; attack/defense/speed 5–13; total at most 70 |
+| `base_moves` | Three IDs: an attack/drain/pierce move, `guard`, `dodge` |
+| `training` | Existing move ID for each of `attack`, `defense`, `technique` |
+| `trait` | `steam`, `rain`, `warm`, `shell`, `spore` or `quick` |
+| `palette` | Four `#RRGGBB` colors: background/transparent, outline, body, highlight |
+| `pixels` | 16×16 or native 32×32 rows. `.` background, `1` outline, `2` body, `3` highlight |
+| `authors` | Proposal, pixel and content creator names |
 
-## 動く追加の例
+## Example
 
 ```sh
-python3 - <<'PY'
-import json
-from pathlib import Path
-p=Path('data/monsters')
-m=json.loads((p/'chapo.json').read_text())
-m.update(id='sample',save_id=6,name='サンプル',bio='タビヲ スル キュウス',starter=False,authors=['Your name'])
-(p/'sample.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')
-PY
-make test
-make
+python3 scripts/new_monster.py sample \
+  --name-en SAMPLE --name-ja サンプル \
+  --bio-en 'A TRAVELING TEAPOT' --bio-ja 'タビヲ スル キュウス' \
+  --author 'Your name'
+make test && make
 ```
 
-これはチャポの元データを再利用する技術的な例です。作品として提案する場合は、その子の設定と絵、戦い方を作ってください。
+The helper scaffolds the example art and data from Chapo, assigns an unused save ID and creates complete catalog entries. Replace the example with your own design before proposing it. The new species becomes a wild encounter candidate automatically; no engine edit is needed.
 
-## 技と特性
+The battle uses 32×32 tiles. Existing 16×16 art is enlarged at an integer scale. Native 32×32 art is rendered directly; the field companion uses a 16×16 sampling. Review both sizes. Palette colors are quantized to GBC 5-bit RGB.
 
-技IDは `data/moves.json` を参照。順序はv1セーブの技IDに対応しているため変更禁止です。通常の追加では既存12技を選びます。
+## Moves and traits
 
-特性の効果：steamは貫通技+2、rainはコサメ+2、warmは回復技+3、shellは被ダメージ-1、sporeは吸収回復+2、quickは行動速度+3です。訓練は習得技と該当能力+2を与え、方針を変更しても習得技は残ります。
+Move IDs and their order are save ABI; do not reorder `data/moves.json`. Existing twelve moves cover attacks, guard, dodge, recovery, speed, focus, pierce and drain.
 
-`make` はドット絵を2bppのタイル、パレットをGBC形式、設定をCのテーブルに変換します。JSONはゲーム内で直接解析しません。使用できない文字、異常な能力、重複ID、壊れた絵はビルドで拒否します。作者クレジットの完全版はJSONとCREDITSに残し、ゲーム内ではGitHubの案内を表示します。
+Traits: steam gives pierce +2; rain gives Rain +2; warm gives healing +3; shell reduces damage by one; spore gives drain healing +2; quick gives action speed +3. Training gives its selected stat +2 and learns the corresponding move. Changing styles retains learned moves; equip up to three at camp.
+
+Validation currently caps species data at 24 and checks baseline IDs, bounds, localization, palettes and square pixel rows. Actual ROM capacity is also a limit. Full credits live in source and CREDITS; the game points to GitHub for them.

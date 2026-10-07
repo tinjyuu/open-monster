@@ -1,71 +1,79 @@
-# オープンモンスター / Open Monster
+# Open Monster
 
-**みんなの創作が、誰かの相棒になる。**
+[English](README.md) · [日本語](README.ja.md)
 
-コミュニティが生み出した自由で奇妙なモンスターを、自分の戦い方に育てる、Game Boy Color / ModRetro Chromatic 向けのオープンソースゲームです。
+**Your creation. Someone's companion.**
 
-v0.1 は育成と対戦、モンスター追加の仕組みを検証する小さな試作です。コード、ドット絵、独自のカタカナフォント、設定データの元データを公開しています。
+An open-source monster-raising adventure for **Game Boy Color and ModRetro Chromatic**. Create strange original creatures together, train them your own way, and challenge the world's trainers.
 
-![実際のROMの戦闘画面](dist/battle-preview.png)
+This is a small, playable prototype: six species, twelve moves, scouting, training, three CPU challengers and battery-backed saves. Code, original pixel sources, font and content are open under MIT.
 
-## 遊ぶ
+![Actual ROM running in the emulator](dist/battle-en-preview.png)
 
-[ROMをダウンロード](https://github.com/tinjyuu/open-monster/raw/refs/heads/main/dist/open-monster.gbc)して、Game Boy Color対応エミュレーター、または対応する書き込み可能カートリッジで起動してください。Chromatic実機は**未検証**です。通常の市販カートリッジに自由に書き込めるとは限りません。
+## Play
 
-- **十字キー**：移動、メニュー選択。戦闘のカードは左右で選択。
-- **A**：調べる、選択、技の決定。
-- **B**：戻る。探索では仲間選択、戦闘では交代・スカウト・逃走。
-- **START**：探索中にセーブ。
-- **SELECT**：タイトル画面でクレジット案内。
+Download `open-monster.gbc` from [Releases](https://github.com/tinjyuu/open-monster/releases), then use a Game Boy Color emulator or a compatible writable cartridge. **Chromatic and original GBC hardware remain untested.** A regular commercial cartridge is not necessarily writable.
 
-相棒を選び、出発地点の建物の近くでAを押すと育成拠点に入れます。クンレンで技を習得したら、ワザノ クミカエで3つの技に装備してください。川は中央の道で渡れます。中央の草むらでは移動、またはAで野生のモンスターと出会えます。東側の3人の強者を倒すと試作の目標達成です。
+| Control | Action |
+| --- | --- |
+| D-pad | Move / choose; left and right select battle cards |
+| A | Interact / confirm / use a move |
+| B | Back; party in the field, auxiliary menu in battle |
+| START | Save in the field; credits on the title screen |
+| SELECT | Switch English / Japanese on the title screen |
 
-日本語表示は8×8ピクセルの独自カタカナフォントです。画面に合わせた短い表記を使っています。
+Choose Chapo, Amagumo or Tomori as your first companion. Press A near the starting building to enter camp. Train a style, then **equip the learned move**. Cross the river on the central path, explore the grass, scout wild creatures, and defeat the three trainers to the east.
 
-## 収録内容
+Battles show both companions at the same height and preview the opponent's next action. Guard halves damage. Dodge avoids ordinary attacks but cannot be used twice consecutively. Pierce bypasses both. Train attack, defense or skill to learn different moves; change your loadout freely at camp.
 
-- チャポ、アマグモ、トモリ、ネジマイ、カサモ、チクタクの6種。最初の3種から相棒を選択。
-- 12種類の技、3つの訓練方針、最大6体の仲間、3人のCPUの強者。
-- 同じ高さで向き合う戦闘画面、3枚の行動カード、相手の次の行動の予告。
-- 防御は被ダメージ半減、回避は通常攻撃を避けるが連続使用不可。貫通攻撃は防御・回避を突破。
-- 敗北時は仲間を失わず拠点に復帰。試作では戦闘開始時に全員が回復します。
-- スカウトは相手の体力が少ないほど成功しやすくなります。同種の重複と7体目はスカウトできません。
-- 勝利で経験値を獲得し、レベル上限は5。強者への再挑戦も可能です。
+You can keep six different species. Battles start with a healed party; losing returns you to camp without losing companions. Levels currently stop at five.
 
-## ビルド
+## Gameplay video
 
-Python 3.12以降、make、公式[GBDK 4.5.0](https://github.com/gbdk-2020/gbdk-2020/releases/tag/4.5.0)を使用します。
+[Watch the 88-second gameplay recording (MP4)](https://github.com/tinjyuu/open-monster/releases/download/v0.2.0/open-monster-gameplay-v0.2.mp4). Real emulator execution, button inputs only, 30 fps; the prototype has no audio. To reproduce it, install ffmpeg, build the ROM, install the test dependencies, then run `.tools/venv/bin/python scripts/record_gameplay.py`.
+
+## Build and verify
+
+Use Python 3.12+, make and [GBDK 4.5.0](https://github.com/gbdk-2020/gbdk-2020/releases/tag/4.5.0).
 
 ```sh
 python3 scripts/install_gbdk.py
 make
+make test
 ```
 
-手動でGBDKを配置する場合は `make GBDK_HOME=/path/to/gbdk`。成果物は `dist/open-monster.gbc`。64 KiB、GBC対応、MBC5 + RAM + battery、8 KiBのカートリッジRAMを宣言しています。
+For an existing toolchain: `make GBDK_HOME=/path/to/gbdk`. `make test` also requires a native C compiler. The ROM is 64 KiB, GBC compatible, MBC5 + RAM + battery, with 8 KiB cartridge RAM.
 
 ```sh
-make test
 python3 -m venv .tools/venv
 .tools/venv/bin/pip install -r tests/requirements.txt
 .tools/venv/bin/python tests/emulator_test.py
+OPEN_MONSTER_LOCALE=ja .tools/venv/bin/python tests/emulator_test.py
+.tools/venv/bin/python tests/addition_test.py
 ```
 
-`make test` のネイティブ検証にはCコンパイラーも必要です。通常のROMビルドにPyBoy/Pillowは不要です。
+CI builds the ROM, checks data and translations, runs both languages through the adventure, and verifies an additional JSON-only species. See [verification](docs/verification.md).
 
-## 参加する
+## Create with us
 
-アイデアだけでも歓迎です。[アイデア投稿](https://github.com/tinjyuu/open-monster/issues/new?template=monster-idea.yml)から、性格・生態・戦い方を教えてください。ラフ、ドット絵、バランス調整、実装、テストを別々の人が担当できます。
+**An idea is enough to join.** Propose a creature's personality, habitat and fighting style through [Issues](https://github.com/tinjyuu/open-monster/issues/new/choose). Different people can help with artwork, writing, balance, code and testing.
 
-[コントリビューション手順](CONTRIBUTING.md)と[モンスターデータ仕様](docs/monster-format.md)に、コードを変えずに1体追加する例があります。吉海と初期メンテナーが公開基準でレビューします。作者名は各JSONの `authors` と [CREDITS.md](CREDITS.md) に残します。
+Read [Contributing](CONTRIBUTING.md) and the [monster format](docs/monster-format.md). Ordinary species additions require content and pixel data, not changes to the game engine. Creators are credited in the monster's `authors` field and [CREDITS](CREDITS.md). tinjyuu and the initial maintainers review proposals against public criteria.
 
-## セーブと検証状況
+## Languages
 
-対応カートリッジのRAMに保存し、エミュレーターではそのカートリッジRAMファイルを使用します。非対応バージョン・破損データを検出した場合は、**その起動中の保存を禁止**して元データを保護します。保存せず新しい旅を試すことは可能です。アップデート前にRAMファイルをバックアップしてください。
+English is the repository's entry point; Japanese documentation is linked beside it. The game has **runtime English/Japanese switching**, including menus, messages, species names, descriptions and moves. The selection is saved, and v0.1 save files still load as Japanese.
 
-[検証記録](docs/verification.md)には実際の操作による完走テストと既知の制限を記録しています。エミュレーターでの成功とChromatic実機確認は別々に扱います。
+- `locales/en.json` / `ja.json`: stable semantic keys, plain flat JSON.
+- `locales/context.json`: translator context and maximum display cells.
+- `python3 scripts/check_locales.py`: missing/extra keys, empty values, glyphs and text overflow.
 
-## ライセンス
+This layout is compatible with Weblate's JSON format. No external translation account or synchronization is enabled automatically. See [Localization](docs/localization.md) to contribute or configure a translation service.
 
-独自コード・設定・画像・フォントは [MIT](LICENSE)。GBDKのリンクされるライブラリはGPLv2 + linking exceptionです。[外部依存の説明](docs/third-party.md)を参照してください。
+## Saves, roadmap and license
 
-通信対戦、大規模な地方・物語、音楽、詳細な戦闘アニメーションは後続版の対象です。
+Unsupported or damaged saves are protected: the game allows a fresh unsaved journey but blocks writes to that cartridge's RAM. Back up your RAM file before upgrades.
+
+The prototype has no music, detailed battle animations, duplicate-species raising, storage boxes, multiplayer or full campaign yet. Additional languages need supported fonts and a ROM budget review.
+
+Original code, setting data, pixels and font: [MIT](LICENSE). Linked GBDK library: GPLv2 with linking exception. [Dependency notices](docs/third-party.md).

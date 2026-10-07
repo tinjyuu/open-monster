@@ -1,32 +1,45 @@
-# 一緒に世界を作る
+# Contributing to Open Monster
 
-アイデア、絵、データ調整、コード、テスト、文章で参加できます。アイデアを出す人と仕上げる人が同じである必要はありません。
+[English](CONTRIBUTING.md) · [日本語](CONTRIBUTING.ja.md)
 
-## アイデアから参加
+Ideas, sketches, pixel art, writing, balance, code and testing are all welcome. You do not need to finish a creature alone.
 
-モンスター提案Issueに「どんな生き物か」「どこに暮らすか」「どんな戦い方をするか」を書いてください。ラフがあれば添付できます。未完成の提案も歓迎します。
+## Start with an idea
 
-共同制作では作者の同意を確認し、担当とクレジットをIssue上で整理します。提案者、ドット絵作者、データ設計担当などをJSONの `authors` に記載してください。
+Open a monster idea Issue. Describe its personality, habitat, fighting style and weaknesses. Attach a sketch if you have one, and explain where you would like help.
 
-## 完成したモンスターを追加
+Agree on roles and credit in the Issue. Record idea, art and data authors in `authors`; add the same credits to CREDITS.md when merging.
 
-1. リポジトリをforkし、`data/monsters/chapo.json` を別名でコピーする。
-2. `id` を一意の英数字に、`save_id` を未使用の整数にする。v0.1の0〜5は予約済み。最初の追加は6、`starter` はfalse。
-3. 名前・生態・能力・パレット・16×16のドット絵・作者を設定する。[詳細](docs/monster-format.md)に従う。
-4. 既存の技・特性から個性を組み立てる。
-5. `make test && make` を実行し、エミュレーターで出会い・スカウト・育成・対戦を確認する。
-6. PRにスクリーンショット、作者、調整意図、動作確認を書く。
+## Add a playable species
 
-追加した種は自動で野生の出現候補に入り、専用コードは不要です。現段階の上限は24種です。追加によって既存の保存IDを変更してはいけません。削除やID変更にはセーブ移行の設計が必要です。
+1. Fork the repository and create a branch.
+2. Run the helper to scaffold a monster and both language catalogs:
 
-## 採用基準
+```sh
+python3 scripts/new_monster.py sample \
+  --name-en SAMPLE --name-ja サンプル --author 'Your name'
+```
 
-- オリジナル作品であり、作者がMITライセンスで公開する権利を持っている。
-- 性格・生態と、技・特性の個性が結びついている。
-- 能力値が公開範囲に収まり、得意なことと弱点が説明できる。
-- バリデーションとテストを通り、小さな画面で判別できる。
-- 共同作者がクレジットされ、協力して調整できる。
+3. Replace the example pixel art, palette, habitat text, stats and move choices. Follow the [format](docs/monster-format.md).
+4. Run `make test && make`, then test encountering, scouting, training and battling your creature.
+5. Open a PR with screenshots, credits, design intent and verification results. State separately whether you tested real hardware.
 
-吉海と初期メンテナーが公開PRで共同レビューします。採用を人気投票や作者の知名度だけで決めません。新しい技・特性・地域は、モンスター単体の追加とは別の設計Issueから始めます。
+The helper creates source data, not a new original design. New species enter the wild encounter pool automatically. The party limit is six; the data validation cap is 24, also subject to actual ROM capacity.
 
-すべての参加者に丁寧に接してください。作者や参加者への攻撃、差別、嫌がらせは認めません。問題はメンテナーに報告してください。
+## Review criteria
+
+- Original work that its creators can share under MIT.
+- Personality and habitat connected to its combat identity.
+- Stats within the published ranges, with strengths and weaknesses.
+- Valid data, readable art and text at 160×144, and reproducible testing.
+- Complete, agreed credits and a willingness to refine the design together.
+
+Project owner tinjyuu and initial maintainers review changes publicly. Votes or creator popularity alone do not determine adoption. New moves, traits or regions start with a separate design Issue.
+
+Never reuse or renumber permanent species IDs or reorder move IDs. Removing baseline species or changing the save format needs an explicit migration design. Do not replace existing artwork without the applicable review.
+
+## Translate
+
+Edit `locales/en.json` or `locales/ja.json`, preserve keys, consult the context catalog, and run `python3 scripts/check_locales.py`. Documentation translations use a language selector at the top. See [Localization](docs/localization.md).
+
+Be respectful. Harassment, discrimination and personal attacks are not accepted. Report problems to a maintainer.
